@@ -48,8 +48,6 @@ header {
 
 .site__header {
     width: 100%;
-    /* max-width: 1600px; */
-    height: 56px;
     /* backdrop-filter: blur(2px);
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); */
@@ -57,7 +55,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: clamp(35px, 5vw, 120px);
+    padding: 15px;
+    padding-inline: clamp(25px, 5vw, 70px);
     /* background-color: var(--white); */
 }
 
@@ -158,7 +157,7 @@ nav {
     width: 100%;
     /* min-height: 640px; */
     height: 100vh;
-    background-image: url(img/hero-bg.png);
+    background-image: url(img/hero-bg.webp);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -279,13 +278,11 @@ nav {
 .prev {
     width: 100%;
     background-color: var(--white);
-    min-height: 391px;
+    /* min-height: 391px; */
 }
 
 .prev__container {
     width: 100%;
-    /* max-width: 1600px; */
-    /* min-height: 507px; */
     margin: 0 auto;
     padding: 30px clamp(20px, 5vw, 120px);
     display: flex;
@@ -295,8 +292,7 @@ nav {
 }
 
 .prev__left-block {
-    /* flex: 1 1 520px; */
-    /* min-height: 427px; */
+    width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -334,7 +330,7 @@ nav {
 .prev__button {
     display: inline-block;
     padding: 10px 20px;
-    width: 90vw;
+    width: 100%;
     background-color: var(--dark-green);
     text-decoration: none;
     text-align: center;
@@ -405,7 +401,7 @@ nav {
     top: 0;
     bottom: 0;
     width: 100%;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 350ms ease;
 }
 
@@ -416,7 +412,7 @@ nav {
     height: 20px;
     border-top: 2px solid rgba(251, 250, 241, 0.9);
     border-right: 2px solid rgba(251, 250, 241, 0.9);
-    opacity: 0;
+    opacity: 1;
     transition: opacity 350ms ease, transform 350ms ease;
     content: "";
 }
@@ -494,7 +490,7 @@ nav {
     width: 100%;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    overflow-x: auto;
 }
 
 .travel__card {
@@ -517,31 +513,11 @@ nav {
 
 .hotel {
     width: 100vw;
-    height: 60vh;
-    background-image: url(img/hotel.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
-.hotel__text {
+.hotel__scroll {
     display: flex;
-    flex-direction: column;
-    padding: 25px 30px;
-}
-
-.hotel h2 {
-    font-family: playfair display;
-    font-size: 19px;
-    font-weight: 400;
-    color: var(--white);
-    text-transform: uppercase;
-}
-
-.hotel p {
-    font-family: inter;
-    font-size: 12px;
-    color: var(--white);
+    overflow-x: auto;
 }
 
 .timesheet {
@@ -551,6 +527,54 @@ nav {
     object-position: center;
 }
 
+.levels {
+    width: 100vw;
+}
+
+.levels__container {
+    display: flex;
+    overflow-x: auto;
+}
+
+.coach {
+    width: 100vw;
+    background-color: var(--white);
+
+}
+
+.coach__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.coach__text {
+    padding: 30px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coach__text p {
+    font-family: inter;
+    font-size: clamp(12, 1vw, 17px);
+    font-weight: 300;
+    color: var(--dark-green);
+}
+
+.coach__text h2 {
+    font-family: playfair display;
+    font-size: clamp(19px, 2vw, 26px);
+    font-weight: 400;
+    color: var(--dark-green);
+}
+
+.coach__image {
+    padding: 0 20px 54px 20px;
+    display: flex;
+    width: 100vw;
+    height: auto;
+    overflow-x: auto;
+}
 
     /* Нужно причесать вторую страницу, 
     страницу с нами путешествуют причесать, сделать бордер радиус+отступы и анимацию
@@ -599,27 +623,38 @@ nav {
 
 
 
-/* 
 
 
 
 
-@media (max-width: 1180px) {
-    .site__header,
-    .hero__container,
-    .prev__container {
-        padding-right: 40px;
-        padding-left: 40px;
+@media (min-width: 768px) {
+    header {
+        position: fixed;
     }
 
-    .prev__container {
-        gap: 40px;
+    .site__header {
+        background-color: var(--white);
     }
 
-    .prev__right-block {
-        width: 38vw;
+    .site__logo {
+        display:block;
+        height: 48px;
+    }
+    .site__logo2 {
+        display: none;
+    }
+
+    .nav__phone, .nav__button {
+        display:flex;
+    }
+
+    .nav__menu-line {
+        background-color: var(--black);
     }
 }
+
+/* 
+
 
 @media (min-width: 1601px) {
     .site__header,
