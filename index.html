@@ -25,9 +25,13 @@
             <nav>
                 <span class="nav__phone">
                     <img src="img/phone.svg" alt="Телефон теннисного клуба" class="nav__phone-icon">
-                    <a href="/" class="nav__phone-number">+7 968 576 1549</a>
+                    <div class="nav__phone-container">
+                        <a href="/" class="nav__phone-number">+7 968 576 1549</a>
+                        <a href="/" class="nav__phone-number">+7 968 576 1549</a>
+                    </div>
                 </span>
-                <a href="/" class="nav__button">ЗАПИСАТЬСЯ</a> <div class="nav__menu">
+                <a href="/" class="nav__button">ЗАПИСАТЬСЯ</a>
+                <div class="nav__menu">
                     <span class="nav__menu-line"></span>
                     <span class="nav__menu-line"></span>
                     <span class="nav__menu-line"></span>
@@ -35,6 +39,46 @@
             </nav>
         </div>
     </header>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-panel">
+            <button class="menu-close" id="menuClose">✕</button>
+
+            <img src="img/logo.svg" alt="Логотип" class="menu-logo">
+
+            <nav class="menu-nav">
+                <a href="https://spb.tennis-go-school.ru/" class="menu-nav__link">Главная</a>
+                <a href="https://spb.tennis-go-school.ru/tennis" class="menu-nav__link">Теннис</a>
+                <a href="https://spb.tennis-go-school.ru/camp" class="menu-nav__link">Кэмпы</a>
+                <a href="https://spb.tennis-go-school.ru/korty" class="menu-nav__link">Локации</a>
+                <a href="https://spb.tennis-go-school.ru/teams" class="menu-nav__link">Тренеры</a>
+                <a href="https://spb.tennis-go-school.ru/sertifikaty" class="menu-nav__link">Сертификаты</a>
+                <a href="https://spb.tennis-go-school.ru/blog" class="menu-nav__link">Блог</a>
+                <a href="https://spb.tennis-go-school.ru/contacts" class="menu-nav__link">Контакты</a>
+            </nav>
+
+            <div class="menu-contacts">
+                <a href="tel:+79111632444" class="menu-contacts__phone">+7 911 163 24 44</a>
+                <a href="tel:+79162990899" class="menu-contacts__phone">+7 916 299 0899</a>
+                <a href="mailto:tennisgoschool@yandex.ru" class="menu-contacts__email">tennisgoschool@yandex.ru</a>
+            </div>
+
+            <div class="menu-socials">
+                <a href="/" class="menu-socials__icon"><img
+                        src="https://static.tildacdn.com/tild3438-3330-4761-a231-336435643837/Frame_2087325282.svg"
+                        alt="Viber"></a>
+                <a href="https://t.me/TennisGoSokolniki" class="menu-socials__icon"><img
+                        src="https://static.tildacdn.com/tild3961-6163-4232-a130-333764323666/Frame_2087325283.svg"
+                        alt="Telegram"></a>
+                <a href="https://api.whatsapp.com/send/?phone=79685761549&text&type=phone_number&app_absent=0"
+                    class="menu-socials__icon"><img
+                        src="https://static.tildacdn.com/tild3430-6330-4165-b835-623330666635/Frame_2087325284.svg"
+                        alt="WhatsApp"></a>
+            </div>
+
+            <a href="/" class="menu-button">ЗАПИСАТЬСЯ</a>
+        </div>
+    </div>
 
     <main>
 
@@ -73,7 +117,7 @@
         <section class="prev">
             <div class="prev__container">
                 <div class="prev__left-block">
-                    <h3 class="prev__header">9 дней, после которых<br> ты по‑другому чувствуешь<br> игру, людей и отдых
+                    <h3 class="prev__header">9 дней, после которых ты по‑другому чувствуешь игру, людей и отдых
                     </h3>
                     <div class="prev__body">
                         <img src="img/prev-calendar.svg" alt="">
@@ -91,68 +135,161 @@
             </div>
         </section>
 
+
         <section class="slide">
             <div class="slide__container">
-                <div class="slide__track">
-                    <img class="slide__frame" src="img/scroll/scroll_1.webp" alt="">
-                    <img class="slide__frame" src="img/scroll/scroll_2.webp" alt="">
-                    <img class="slide__frame" src="img/scroll/scroll_3.webp" alt="">
-                    <img class="slide__frame" src="img/scroll/scroll_4.webp" alt="">
+                <div class="slide__progress">
+                    <div class="slide__progress-bar" data-index="0"><span></span></div>
+                    <div class="slide__progress-bar" data-index="1"><span></span></div>
+                    <div class="slide__progress-bar" data-index="2"><span></span></div>
+                    <div class="slide__progress-bar" data-index="3"><span></span></div>
                 </div>
-                <button class="slide__edge slide__edge--prev" type="button" aria-label="Previous slide"></button>
-                <button class="slide__edge slide__edge--next" type="button" aria-label="Next slide"></button>
+                <div class="slide__track">
+                    <picture class="slide__frame">
+                        <source media="(min-width: 768px)" srcset="img/scroll/scroll_desktop/1.webp">
+                        <img src="img/scroll/scroll_1.webp" alt="">
+                    </picture>
+                    <picture class="slide__frame">
+                        <source media="(min-width: 768px)" srcset="img/scroll/scroll_desktop/2.webp">
+                        <img src="img/scroll/scroll_2.webp" alt="">
+                    </picture>
+                    <picture class="slide__frame">
+                        <source media="(min-width: 768px)" srcset="img/scroll/scroll_desktop/3.webp">
+                        <img src="img/scroll/scroll_3.webp" alt="">
+                    </picture>
+                    <picture class="slide__frame">
+                        <source media="(min-width: 768px)" srcset="img/scroll/scroll_desktop/4.webp">
+                        <img src="img/scroll/scroll_4.webp" alt="">
+                    </picture>
+                </div>
+                <button class="slide__edge slide__edge--prev" ...></button>
+                <button class="slide__edge slide__edge--next" ...></button>
             </div>
         </section>
 
-        <section class="travel">
-            <h1 class="travel__title">
-                С нами путешествуют:
-            </h1>
-            
-            <div class="travel__container">
-                <div class="travel__card">
-                    <img class="travel__frame" src="img/gal/1.webp" alt="">
-                    <img class="travel__frame" src="img/gal/2.webp" alt="">
-                    <img class="travel__frame" src="img/gal/3.webp" alt="">
-                    <img class="travel__frame" src="img/gal/4.webp" alt="">
-                    <img class="travel__frame" src="img/gal/5.webp" alt="">
-                    <img class="travel__frame" src="img/gal/6.webp" alt="">
-                    <img class="travel__frame" src="img/gal/7.webp" alt="">
-                    <img class="travel__frame" src="img/gal/8.webp" alt="">
-                    <img class="travel__frame" src="img/gal/9.webp" alt="">
-                    <img class="travel__frame" src="img/gal/10.webp" alt="">
-                    <img class="travel__frame" src="img/gal/11.webp" alt="">
-                    <img class="travel__frame" src="img/gal/12.webp" alt="">
-                    <img class="travel__frame" src="img/gal/13.webp" alt="">
-                    <img class="travel__frame" src="img/gal/14.webp" alt="">
-                    <img class="travel__frame" src="img/gal/15.webp" alt="">
-                    <img class="travel__frame" src="img/gal/16.webp" alt="">
-                    <img class="travel__frame" src="img/gal/17.webp" alt="">
-                    <img class="travel__frame" src="img/gal/18.webp" alt="">
-                    <img class="travel__frame" src="img/gal/19.webp" alt="">
-                </div>
-            </div>
-        </section>
+
+<section class="travel">
+    <h1 class="travel__title">С нами путешествуют:</h1>
+
+    <div class="travel__container">
+        <button class="travel__edge travel__edge--prev" type="button" aria-label="Previous"></button>
+        <button class="travel__edge travel__edge--next" type="button" aria-label="Next"></button>
+
+        <div class="travel__track">
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/1.webp">
+                <img src="img/gal/1.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/2.webp">
+                <img src="img/gal/2.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/3.webp">
+                <img src="img/gal/3.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/4.webp">
+                <img src="img/gal/4.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/5.webp">
+                <img src="img/gal/5.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/6.webp">
+                <img src="img/gal/6.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/7.webp">
+                <img src="img/gal/7.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/8.webp">
+                <img src="img/gal/8.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/9.webp">
+                <img src="img/gal/9.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/10.webp">
+                <img src="img/gal/10.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/11.webp">
+                <img src="img/gal/11.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/12.webp">
+                <img src="img/gal/12.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/13.webp">
+                <img src="img/gal/13.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/14.webp">
+                <img src="img/gal/14.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/15.webp">
+                <img src="img/gal/15.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/16.webp">
+                <img src="img/gal/16.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/17.webp">
+                <img src="img/gal/17.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/18.webp">
+                <img src="img/gal/18.webp" alt="">
+            </picture>
+            <picture class="travel__frame">
+                <source media="(min-width: 768px)" srcset="img/gal/gal_desktop/19.webp">
+                <img src="img/gal/19.webp" alt="">
+            </picture>
+        </div>
+    </div>
+</section>
 
         <section class="hotel">
             <div class="hotel__scroll">
-                <img class="hotel__frame" src="img/hotel/1.webp" alt="">
-                <img class="hotel__frame" src="img/hotel/2.webp" alt="">
-                <img class="hotel__frame" src="img/hotel/3.webp" alt="">
-                <img class="hotel__frame" src="img/hotel/4.webp" alt="">
-                
+                <picture class="travel__frame">
+                    <source media="(min-width: 768px)" srcset="img/hotel/hotel_desktop/1.webp">
+                    <img src="img/hotel/1.webp" alt="">
+                </picture>
+                <picture class="travel__frame">
+                    <source media="(min-width: 768px)" srcset="img/hotel/hotel_desktop/2.webp">
+                    <img src="img/hotel/2.webp" alt="">
+                </picture>
+                <picture class="travel__frame">
+                    <source media="(min-width: 768px)" srcset="img/hotel/hotel_desktop/3.webp">
+                    <img src="img/hotel/3.webp" alt="">
+                </picture>
+                <picture class="travel__frame">
+                    <source media="(min-width: 768px)" srcset="img/hotel/hotel_desktop/4.webp">
+                    <img src="img/hotel/4.webp" alt="">
+                </picture>
+
             </div>
         </section>
 
         <section class="timesheet">
-            <img src="img/raspisanie.webp" alt="">
+            <picture>
+                <source media="(min-width: 768px)" srcset="img/raspisanie/rasp.webp">
+                <img src="img/raspisanie.webp" alt="">
+            </picture>
         </section>
 
         <section class="levels">
             <div class="levels__container">
-                <img src="img/aim/beg.webp" alt="">
-                <img src="img/aim/mid.webp" alt="">
-                <img src="img/aim/adv.webp" alt="">
+                <img class="levels__frame" src="img/aim/beg.webp" alt="">
+                <img class="levels__frame" src="img/aim/mid.webp" alt="">
+                <img class="levels__frame" src="img/aim/adv.webp" alt="">
             </div>
         </section>
 
@@ -167,6 +304,35 @@
                     <img src="img/coach/nikita.webp" alt="">
                     <img src="img/coach/maria.webp" alt="">
                 </div>
+            </div>
+        </section>
+
+        <section class="price">
+            <img src="img/price/396.webp" alt="">
+        </section>
+
+
+        <section class="carousel">
+            <div class="carousel__group">
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+
+            </div>
+            <div aria-hidden class="carousel__group">
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
+                <span class="carousel__txt">Предоплата — 25% от суммы тура</span>
             </div>
         </section>
 

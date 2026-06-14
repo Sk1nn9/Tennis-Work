@@ -82,8 +82,9 @@ nav {
 }
 
 .nav__phone-icon {
-    width: 19px;
-    height: 18px;
+    width: 25px;
+    margin-right: 5px;
+    flex: 1 1 0 ;
 }
 .nav__phone-number {
     text-decoration: none;
@@ -151,6 +152,138 @@ nav {
     width: 100%;
     height: 3px;
     background-color: var(--white);
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end; /* панель справа */
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.is-open {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.menu-panel {
+    width: min(360px, 100vw);
+    height: 100%;
+    background-color: var(--white);
+    /* padding: 42px 25px 25px 25px; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    /* gap: 30px; */
+    overflow-y: auto;
+    transform: translateX(100%); /* выезжает справа */
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-overlay.is-open .menu-panel {
+    transform: translateX(0);
+}
+
+/* Тёмный фон слева */
+.menu-overlay::before {
+    content: "";
+    flex: 1;
+    background: rgba(28, 26, 27, 0.5);
+}
+
+.menu-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--black);
+    padding: 16px 16px;
+    line-height: 1;
+}
+
+.menu-logo {
+    height: 74px;
+    width: auto;
+    margin: 0 30px 30px;
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 18px;
+    padding: 0 30px;
+    flex: 1;
+}
+
+.menu-nav__link {
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--black);
+    transition: color 0.2s ease;
+}
+
+
+.menu-nav__link:hover {
+    color: var(--dark-green);
+}
+
+.menu-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 30px;
+    margin-top: auto;
+}
+
+.menu-contacts__phone,
+.menu-contacts__email {
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.menu-socials {
+    display: flex;
+    gap: 16px;
+    padding: 16px 30px 0;
+}
+
+.menu-socials__icon img {
+    width: 36px;
+    height: 36px;
+}
+
+.menu-button {
+    display: block;
+    padding: 12px 25px;
+    margin: 20px 30px 30px;
+    background-color: var(--dark-green);
+    text-decoration: none;
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s ease;
+}
+
+.menu-button:hover {
+    opacity: 0.85;
+}
+
+/* Блокировка скролла страницы при открытом меню */
+body.menu-is-open {
+    overflow: hidden;
 }
 
 .hero {
@@ -286,13 +419,13 @@ nav {
     margin: 0 auto;
     padding: 30px clamp(20px, 5vw, 120px);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     /* gap: px; */
 }
 
 .prev__left-block {
-    width: 90vw;
+    width: min(470px, 90vw);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -343,10 +476,9 @@ nav {
 
 .prev__right-block {
     display: none;
-    flex: 0 1 520px;
-    width: min(36vw, 520px);
-    max-height: 442px;
-    object-fit: cover;
+    /* flex: 0 1 520px; */
+    /* width: clamp(32px, 5vw); */
+    /* object-fit: cover; */
 }
 
 
@@ -367,7 +499,7 @@ nav {
 .slide__track {
     display: flex;
     transform: translateX(0);
-    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
 }
 
@@ -467,18 +599,50 @@ nav {
     transform: translate(6px, -50%) rotate(45deg);
 }
 
+.slide__progress {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 10;
+    display: flex;
+    gap: 6px;
+}
+
+.slide__progress-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(251, 250, 241, 0.35);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slide__progress-bar span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--white);
+    border-radius: 2px;
+    transition: none;
+}
+
+.slide__progress-bar.is-done span {
+    width: 100%;
+}
+
 
 .travel {
-    padding: 30px;
+    padding: 30px 0 30px 30px;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 3vh;
     background-color: var(--dark-green);
+    overflow: hidden;
 }
 
 .travel__title {
-    /* inline; */
     text-transform: uppercase;
     font-family: playfair display;
     font-size: 19px;
@@ -487,30 +651,47 @@ nav {
 }
 
 .travel__container {
-    width: 100%;
-    margin: 0 auto;
     position: relative;
-    overflow-x: auto;
+    overflow: hidden;
 }
 
-.travel__card {
+.travel__track {
     display: flex;
-    transform: translateX(0);
+    gap: 16px;
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
 }
 
-.travel__card.is-resetting {
+.travel__track.is-resetting {
+    transition: none;
+}
+
+.travel__track.is-dragging {
+    cursor: grabbing;
     transition: none;
 }
 
 .travel__frame {
-    flex: 0 0 100%;
-    width: 100%;
+    flex: 0 0 calc(100% - 30px); /* на мобильном видна часть следующей */
     display: block;
     border-radius: 15px;
-    user-select: none;
+    overflow: hidden;
     pointer-events: none;
 }
 
+.travel__frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Кнопки — скрыты на мобильном */
+.travel__edge {
+    display: none;
+}
 .hotel {
     width: 100vw;
 }
@@ -535,6 +716,15 @@ nav {
     display: flex;
     overflow-x: auto;
 }
+
+/* .levels__frame {
+    transition: ease 1s;
+}
+
+.levels__frame:hover {
+    transform: translateX(-100vw);
+
+} */
 
 .coach {
     width: 100vw;
@@ -569,17 +759,59 @@ nav {
 }
 
 .coach__image {
-    padding: 0 20px 54px 20px;
+    padding: 0 30px 54px 30px;
     display: flex;
     width: 100vw;
     height: auto;
     overflow-x: auto;
+    gap: 20px
 }
 
-    /* Нужно причесать вторую страницу, 
-    страницу с нами путешествуют причесать, сделать бордер радиус+отступы и анимацию
-    Расписание тоже нормальным сделать */
+.price {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
 
+.carousel {
+    width: 100vw;
+    padding: 8px 0;
+    display: flex;
+    background-color: var(--dark-green);
+    overflow-x: auto;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel__group {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: carousel 40s linear infinite;
+    padding-right: 30px;
+}
+
+.carousel__txt {
+    white-space: nowrap;
+    font-family: playfair display;
+    font-size: clamp(19px, 5vw, 32px);
+    font-weight: 400;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+@keyframes carousel {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
 
 @keyframes pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(251, 250, 241, 0.6);}
@@ -590,22 +822,6 @@ nav {
     }
 }
 
-@keyframes pulse1 {
-    0% { 
-        box-shadow: 0 0 0 0 rgba(255, 123, 0, 0.4);
-        transform: skewX(50deg);
-    }
-
-
-    50% { 
-        box-shadow: 0 0 0 10px rgba(68, 0, 255, 0.8);
-        transform: scale(1.5);
-    }
-
-    100% { box-shadow: 0 0 0 0 rgba(255, 123, 0, 0.4);
-        transform: skewX(-50deg);    
-    }
-}
 
 @keyframes rotate {
     0% {
@@ -646,32 +862,87 @@ nav {
 
     .nav__phone, .nav__button {
         display:flex;
+        flex: 0 1 auto;
+    }
+
+    .nav__phone-container {
+        display: flex;
+        flex-direction: column;
     }
 
     .nav__menu-line {
         background-color: var(--black);
     }
+
+    .prev__button {
+        max-width: 440px;
+    }
+
+    .prev__right-block {
+        display: block;
+        width: auto;
+        min-height: 460px;
+        padding-left: 40px;
+    }
+
+    .levels__container {
+        display: flex;
+        overflow-x: none;
+        flex: 1 1 0;
+    }
+    .travel {
+        padding: 40px 0 40px 60px;
+    }
+
+    .travel__title {
+        font-size: clamp(19px, 2vw, 28px);
+    }
+
+    .travel__frame {
+        flex: 0 0 70%; /* на десктопе видна часть следующей карточки */
+        border-radius: 20px;
+    }
+
+    .travel__edge {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid rgba(251, 250, 241, 0.6);
+        background: transparent;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .travel__edge::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid var(--white);
+        border-right: 2px solid var(--white);
+    }
+
+    .travel__edge--prev {
+        left: 16px;
+    }
+
+    .travel__edge--prev::after {
+        transform: translate(-30%, -50%) rotate(-135deg);
+    }
+
+    .travel__edge--next {
+        right: 60px; /* отступ чтобы не перекрывать выглядывающую карточку */
+    }
+
+    .travel__edge--next::after {
+        transform: translate(-70%, -50%) rotate(45deg);
+    }
+
 }
 
-/* 
-
-
-@media (min-width: 1601px) {
-    .site__header,
-    .hero__container,
-    .prev__container {
-        max-width: 1760px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    .slide__track,
-    .slide__edge::before,
-    .slide__edge::after {
-        transition-duration: 1ms;
-    }
-} */
