@@ -713,6 +713,18 @@ body.menu-is-open {
     overflow: hidden;
 }
 
+.levels__title {
+    text-decoration: none;
+    text-align: center;
+    padding: 30px 0px;
+    font-family: playfair display;
+    font-size: clamp(19px, 2vw, 26px);
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--dark-green);
+}
+
 .levels__track {
     display: flex;
     gap: 0;
@@ -905,6 +917,43 @@ body.menu-is-open {
 
 .price__card-btn:hover {
     opacity: 0.85;
+}
+
+.price__card-btn-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.price__tooltip {
+    display: none; /* скрыт по умолчанию */
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    width: 220px;
+    padding: 10px 14px;
+    background-color: var(--dark-green);
+    opacity: 85%;
+    color: var(--white);
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Стрелка вниз у тултипа */
+.price__tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    border: 6px solid transparent;
+    border-top-color: var(--dark-green);
+}
+
+.price__card-btn-wrap.is-open .price__tooltip {
+    display: block;
 }
 
 .price__card-desc {
@@ -1661,6 +1710,10 @@ body.form-is-open {
     .price__card-btn {
         font-size: clamp(13px, 1vw, 16px);
         flex-shrink: 0;
+    }
+
+    .price__card-btn-wrap:hover .price__tooltip {
+        display: block;
     }
 
     .price__card-desc {
