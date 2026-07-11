@@ -803,28 +803,23 @@ document.querySelectorAll(".price__card-btn-wrap").forEach((wrap) => {
     const btn = wrap.querySelector(".price__card-btn");
 
     btn.addEventListener("click", (e) => {
-        // только на мобильном
         if (window.innerWidth >= 768) return;
-        
-        e.preventDefault(); // не открываем форму при первом тапе
-        
+
         const isOpen = wrap.classList.contains("is-open");
-        
-        // закрываем все остальные
+
+        // закрываем все
         document.querySelectorAll(".price__card-btn-wrap").forEach(w => {
             w.classList.remove("is-open");
         });
-        
+
         if (!isOpen) {
+            // первый тап — показываем тултип, блокируем форму
+            e.stopImmediatePropagation();
+            e.preventDefault();
             wrap.classList.add("is-open");
-            // второй тап — открываем форму
-            btn.addEventListener("click", (e2) => {
-                e2.preventDefault();
-                wrap.classList.remove("is-open");
-                openForm();
-            }, { once: true });
         }
-    });
+        // второй тап — is-open уже снят, форма открывается штатно
+    }, true); // capture: true — перехватываем раньше обработчика формы
 });
 
 // закрываем тап вне тултипа
