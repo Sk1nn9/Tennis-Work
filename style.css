@@ -852,6 +852,18 @@ body.menu-is-open {
     gap: 20px;
 }
 
+.price__card-comm {
+    width: 100%;
+    padding-left: 6px;
+    text-decoration: none;
+    color: var(--white);
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+    opacity: 40%;
+}
+
 .price__card--green .price__card-title {
     font-size: clamp(18px, 4vw, 24px);
     text-align: center;
@@ -1729,7 +1741,7 @@ body.form-is-open {
         text-align: left;
     }
 
-    .price__card-list {
+    .price__card-list, .price__card-comm {
         font-size: clamp(13px, 1vw, 16px);
     }
 
@@ -1797,7 +1809,7 @@ body.form-is-open {
         font-size: clamp(18px, 1.2vw, 26px);
     }
 
-    .price__card-list {
+    .price__card-list, .price__card-comm {
         font-size: clamp(14px, 0.9vw, 18px);
     }
 
